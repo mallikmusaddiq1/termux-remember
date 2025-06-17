@@ -7,7 +7,7 @@ setup(
     version="1.1.1",
     author="Mallik Mohammad Musaddiq",
     author_email="mallikmusaddiq1@gmail.com",
-    description=" Secure CLI note keeper for Termux with tagging and password protection",
+    description="Secure CLI note keeper for Termux with tagging and password protection",
     long_description=open("README.md", encoding="utf-8").read(),
     long_description_content_type="text/markdown",
     url="https://github.com/mallikmusaddiq1/termux-remember",
