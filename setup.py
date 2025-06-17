@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="termux-remember",
-    version="1.1.0",
+    version="1.1.1",
     author="Mallik Mohammad Musaddiq",
     author_email="mallikmusaddiq1@gmail.com",
     description=" Secure CLI note keeper for Termux with tagging and password protection",
