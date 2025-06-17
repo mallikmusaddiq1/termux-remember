@@ -96,11 +96,6 @@ EOF
 ```
 
 ✅ Finish with `EOF` on a new line
-✅ Use `\n` inside single-line input to simulate newlines
-
-```bash
-remember --add "Line1\nLine2"
-```
 
 ---
 
