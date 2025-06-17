@@ -2,38 +2,34 @@
 
 **Secure CLI Note Keeper for Termux with Tagging & Password Protection**
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Python](https://img.shields.io/badge/python-3.6%2B-blue)]()
-[![Platform](https://img.shields.io/badge/platform-Termux%2FLinux-lightgrey)]()
-[![PyPI](https://img.shields.io/pypi/v/termux-remember)](https://pypi.org/project/termux-remember/)
-[![Downloads](https://static.pepy.tech/badge/termux-remember)](https://pepy.tech/project/termux-remember)
-
 ---
 
 ## 📦 Description
 
 `termux-remember` is a secure, offline-first, and interactive command-line note-taking assistant built especially for Termux users. It supports:
 
-- 📝 Multi-line and single-line notes
-- 🔐 Password protection (per-note)
-- 🏷️ Tagging system with powerful tag operations
-- 🔍 Keyword search
-- 🧩 Full interactive input modes
-- 🖥️ Beautiful output with [rich](https://github.com/Textualize/rich)
-- 📂 Local-only storage for privacy
+* 📝 Multi-line and single-line notes
+* 🔐 Password protection (per-note)
+* 🏷️ Tagging system with powerful tag operations
+* 🔍 Keyword search
+* 🧹 Full interactive input modes
+* 🖥️ Beautiful output with [rich](https://github.com/Textualize/rich)
+* 📂 Local-only storage for privacy
 
 ---
 
 ## ⚙️ Installation
 
 ### Option 1: Clone and Install
+
 ```bash
 git clone https://github.com/mallikmusaddiq1/termux-remember.git
 cd termux-remember
 pip install .
 ```
 
-### Option 2: Install directly via pip
+### Option 2: Install via pip
+
 ```bash
 pip install termux-remember
 ```
@@ -50,12 +46,13 @@ An interactive terminal-based assistant to securely store your personal notes, i
 
 ## 📁 STORAGE DIRECTORY
 
-- `~/.termux_remember/user.json` → User credentials
-- `~/.termux_remember/memory.json` → Saved notes
+* `~/.termux_remember/user.json` → User credentials
+* `~/.termux_remember/memory.json` → Saved notes
 
 ---
 
 ## 🔐 USER AUTHENTICATION
+
 ```bash
 --signup           Register with your email and password
 --login            Login to your account
@@ -65,6 +62,7 @@ An interactive terminal-based assistant to securely store your personal notes, i
 ---
 
 ## 📝 NOTE ADDITION & EDITING
+
 ```bash
 --add TEXT         Add a note (single-line)
 --add              Launch interactive input mode (multi-line)
@@ -78,22 +76,28 @@ An interactive terminal-based assistant to securely store your personal notes, i
 ## 📥 INTERACTIVE INPUT MODES
 
 ### 1. Single-line input
+
 ```bash
 remember --add "Today I learned Python!"
 ```
 
 ### 2. Multi-line interactive input
+
 ```bash
 remember --add
 ```
+
 Then type:
+
 ```
 Note: This app is helpful.
 It supports password protection.
 EOF
 ```
-✅ Finish with `EOF` on a new line  
+
+✅ Finish with `EOF` on a new line
 ✅ Use `\n` inside single-line input to simulate newlines
+
 ```bash
 remember --add "Line1\nLine2"
 ```
@@ -101,6 +105,7 @@ remember --add "Line1\nLine2"
 ---
 
 ## 🏷️ TAGGING & MANAGEMENT
+
 ```bash
 --retag ID TAG             Change tag of a note
 --list-tag                 List all unique tags
@@ -112,6 +117,7 @@ remember --add "Line1\nLine2"
 ---
 
 ## 📋 LIST & SEARCH
+
 ```bash
 --list             List all saved notes (🔐 = password-protected)
 --find KEY         Search notes by keyword
@@ -122,6 +128,7 @@ remember --add "Line1\nLine2"
 ---
 
 ## 🗑️ NOTE DELETION
+
 ```bash
 --forget ID        Delete a specific note
 --forget-all       Delete all notes (confirmation + password required)
@@ -130,13 +137,15 @@ remember --add "Line1\nLine2"
 ---
 
 ## 🔐 SECURITY DETAILS
-- Passwords stored securely using SHA-256 hashing
-- Protected notes are hidden unless verified
-- View/delete of protected notes requires confirmation
+
+* Passwords stored securely using SHA-256 hashing
+* Protected notes are hidden unless verified
+* View/delete of protected notes requires confirmation
 
 ---
 
 ## 🧪 USAGE EXAMPLES
+
 ```bash
 remember --signup
 remember --login
@@ -157,11 +166,13 @@ remember --forget-all
 ---
 
 ## 🔑 FORGOT PASSWORD?
+
 Just create a new account using `--signup`
 
 ---
 
 ## 📦 VERSION & META
+
 ```bash
 --version          Show version and author details
 ```
@@ -169,24 +180,23 @@ Just create a new account using `--signup`
 ---
 
 ## 👨‍💻 AUTHOR
-**Mallik Mohammad Musaddiq**  
-📧 Email: mallikmusaddiq1@gmail.com  
+
+**Mallik Mohammad Musaddiq**
+📧 Email: [mallikmusaddiq1@gmail.com](mailto:mallikmusaddiq1@gmail.com)
 🌐 GitHub: [mallikmusaddiq1](https://github.com/mallikmusaddiq1)
 
 ---
 
 ## 🌐 GITHUB REPOSITORY
+
 [https://github.com/mallikmusaddiq1/termux-remember](https://github.com/mallikmusaddiq1/termux-remember)
 
 ---
 
 ## 📄 LICENSE
+
 This project is licensed under the MIT License – see the [LICENSE](LICENSE) file for details.
 
 ---
 
-Made with ❤️ for Termux users who don’t want to forget little things.s licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-Made with ❤️ for Termux users who don't want to forget little things.
+Made with ❤️ for Termux users who don’t want to forget little things.
