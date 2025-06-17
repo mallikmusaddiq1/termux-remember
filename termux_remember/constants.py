@@ -4,9 +4,8 @@ import os
 BASE_DIR = os.path.expanduser("~/.termux_remember")
 USER_FILE = os.path.join(BASE_DIR, "user.json")
 MEMORY_FILE = os.path.join(BASE_DIR, "memory.json")
-version = "1.1.1"
 
-version = "1.1.0"
+version = "1.1.1"
 author = "Mallik Mohammad Musaddiq"
 email = "mallikmusaddiq1@gmail.com"
 github = "https://github.com/mallikmusaddiq1/termux-remember"
