@@ -13,7 +13,12 @@ class AuthManager:
 
     def signup(self):
         email = input("📧 Enter your email: ").strip()
-        password = getpass.getpass("🔐 Create password: ")
+        password = getpass.getpass("🔐 Create password: ").strip()
+
+        if not email or not password:
+            console.print("❌ [red]Email and password cannot be empty.[/red]")
+            return
+
         password_hash = hash_password(password)
         self.user_data = {
             "email": email,
@@ -21,13 +26,14 @@ class AuthManager:
             "session_active": False
         }
         save_json(USER_FILE, self.user_data)
-        console.print("✅ [green]Signup complete.[/green] Now login to start using termux-remember.")
+        console.print("✅ [green]Signup complete![/green] Now use [bold]--login[/bold] to begin.")
 
     def login(self):
         if not self.user_data:
-            console.print("❌ [red]No account found.[/red] Run --signup first.")
+            console.print("❌ [red]No account found.[/red] Please run [bold]--signup[/bold] first.")
             return False
-        password = getpass.getpass("🔐 Enter password: ")
+
+        password = getpass.getpass("🔐 Enter password: ").strip()
         if hash_password(password) == self.user_data.get("password_hash"):
             self.user_data["session_active"] = True
             save_json(USER_FILE, self.user_data)
@@ -40,11 +46,11 @@ class AuthManager:
     def logout(self):
         self.user_data["session_active"] = False
         save_json(USER_FILE, self.user_data)
-        console.print("👋 [cyan]Logged out.[/cyan]")
+        console.print("👋 [cyan]You have been logged out.[/cyan]")
 
     def is_logged_in(self):
         return self.user_data.get("session_active", False)
 
     def verify_password(self):
-        password = getpass.getpass("🔐 Confirm password: ")
+        password = getpass.getpass("🔐 Confirm password: ").strip()
         return hash_password(password) == self.user_data.get("password_hash")
