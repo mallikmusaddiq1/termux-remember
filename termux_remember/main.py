@@ -144,6 +144,8 @@ Made with ❤️ for Termux users who don’t want to forget little things.
 [bold cyan]🧑‍💻 Author:[/bold cyan] {author}
 [bold blue]🔗 GitHub:[/bold blue] {github}
 [bold yellow]✉️ Email:[/bold yellow] {email}
+
+[bold magenta]Made with ❤️ for Termux users who don’t want to forget little things.[/bold magenta]
 """)
         return
 
