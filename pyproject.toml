@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "termux-remember"
-version = "1.1.0"
+version = "1.1.1"
 description = "A Secure CLI Note Keeper for Termux Users"
 readme = "README.md"
 requires-python = ">=3.6"
