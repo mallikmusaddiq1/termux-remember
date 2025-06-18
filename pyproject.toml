@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "termux-remember"
+version = "1.1.2"
+description = "A Secure and POSIX-style CLI Note Keeper for Termux Users with Tagging and Password Support"
+readme = "README.md"
+requires-python = ">=3.7"
+license = { text = "MIT" }
+
+authors = [
+  { name = "Mallik Mohammad Musaddiq", email = "mallikmusaddiq1@gmail.com" }
+]
+
+keywords = [
+  "termux", "notes", "cli", "secure", "posix", "tagging", "password", "remember"
+]
+
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Operating System :: POSIX :: Linux",
+  "License :: OSI Approved :: MIT License",
+  "Environment :: Console",
+  "Intended Audience :: End Users/Desktop",
+  "Topic :: Utilities",
+  "Topic :: Terminals"
+]
+
+dependencies = [
+  "rich>=13.0.0"
+]
+
+[project.urls]
+Homepage = "https://github.com/mallikmusaddiq1/termux-remember"
+Repository = "https://github.com/mallikmusaddiq1/termux-remember"
+Issues = "https://github.com/mallikmusaddiq1/termux-remember/issues"
+
+[project.scripts]
+remember = "termux_remember.main:main"
