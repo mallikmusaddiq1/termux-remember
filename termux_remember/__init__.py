@@ -13,6 +13,6 @@ Author : Mallik Mohammad Musaddiq
 License: MIT
 """
 
-__version__ = "1.1.1"
+__version__ = "1.1.2"
 __author__ = "Mallik Mohammad Musaddiq"
 __email__ = "mallikmusaddiq1@gmail.com"
