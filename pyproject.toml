@@ -4,10 +4,10 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "termux-remember"
-version = "1.1.1"
-description = "A Secure CLI Note Keeper for Termux Users"
+version = "1.1.2"
+description = "A Secure and POSIX-style CLI Note Keeper for Termux Users with Tagging and Password Support"
 readme = "README.md"
-requires-python = ">=3.6"
+requires-python = ">=3.7"
 license = { text = "MIT" }
 
 authors = [
@@ -15,7 +15,7 @@ authors = [
 ]
 
 keywords = [
-  "termux", "notes", "cli", "secure", "tagging", "password", "remember"
+  "termux", "notes", "cli", "secure", "posix", "tagging", "password", "remember"
 ]
 
 classifiers = [
@@ -24,7 +24,8 @@ classifiers = [
   "License :: OSI Approved :: MIT License",
   "Environment :: Console",
   "Intended Audience :: End Users/Desktop",
-  "Topic :: Utilities"
+  "Topic :: Utilities",
+  "Topic :: Terminals"
 ]
 
 dependencies = [
