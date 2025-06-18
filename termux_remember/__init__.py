@@ -1,14 +1,18 @@
 """
-🧠 termux_remember
+termux_remember
 
-A secure and interactive CLI-based note-taking assistant designed for Termux users.
-Features include password-protected notes, tagging system, keyword search, and multi-line input modes.
+A secure, interactive, and POSIX-style CLI note-taking assistant.
+Designed specifically for Termux and UNIX-like environments, it supports:
+- Password-protected notes
+- Tagging system
+- Keyword search
+- Multi-line note input
 
 Project: https://github.com/mallikmusaddiq1/termux-remember
 Author : Mallik Mohammad Musaddiq
 License: MIT
 """
 
-__version__ = "1.1.1"  # 🔁 Update this whenever a new version is released
+__version__ = "1.1.1"
 __author__ = "Mallik Mohammad Musaddiq"
 __email__ = "mallikmusaddiq1@gmail.com"
