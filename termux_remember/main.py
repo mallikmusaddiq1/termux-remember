@@ -14,104 +14,69 @@ console = Console()
 def main():
     parser = argparse.ArgumentParser(
         description=f"""
-🧠 Termux Remember – A Secure CLI Note Keeper for Termux
-────────────────────────────────────────────────────────────
-An interactive terminal-based assistant to securely store your 
-personal notes, ideas, and tasks. Supports tagging, password 
-protection, multi-line entries, and keyword-based search.
+Termux Remember - Secure Note Keeper for Termux
+------------------------------------------------
+A command-line assistant for storing personal notes, ideas, and tasks with optional tagging,
+password protection, and search functionality.
 
-📁 STORAGE DIRECTORY
-────────────────────
-• User credentials : ~/.termux_remember/user.json
-• Saved notes      : ~/.termux_remember/memory.json
+STORAGE PATHS
+-------------
+• Credentials : ~/.termux_remember/user.json
+• Notes       : ~/.termux_remember/memory.json
 
-🔐 USER AUTHENTICATION
-──────────────────────
-• --signup               Register using email and password
-• --login                Login to your account
-• --logout               Logout from the current session
+AUTHENTICATION
+--------------
+• --signup               Create a new account
+• --login                Login to an existing account
+• --logout               Logout from current session
 
-📝 NOTE ADDITION & EDITING
-────────────────────────────
-• --add TEXT             Add a note (only single-line input if TEXT is provided)
-• --add                  Launch interactive input mode (single & multi-line input)
-• --edit-note ID         Edit a specific note by ID (interactive)
-• --tag TAG              Assign a tag to your note (e.g., --tag "personal")
-• --password             Protect note using your account password
+NOTE ADDITION & EDITING
+------------------------
+• --add TEXT             Add a single-line note
+• --add                  Launch interactive note input
+• --edit-note ID         Edit a note by ID
+• --tag TAG              Tag a note (e.g., --tag "task")
+• --password             Protect the note with password
 
-📥 INTERACTIVE INPUT MODES
-────────────────────────────
-• Use --add "your note"        → For single-line notes
-• Use just --add               → For interactive multi-line input
-  ↳ Type lines and finish with: EOF
-
-🔁 Examples:
-$ remember --add
-> Today was great
-> I am very happy
-> EOF
-
-🏷️ TAGGING & MANAGEMENT
-────────────────────────
-• --retag ID TAG              Change tag of a specific note
-• --list-tag                  List all unique tags
+TAG MANAGEMENT
+--------------
+• --retag ID TAG              Replace tag of a note
+• --list-tag                  List all tags
 • --delete-all-tags           Remove all tags from all notes
-• --delete-specific-tag TAG   Remove a specific tag from all notes
-• --rm-note-tag ID            Remove tag from a specific note
+• --delete-specific-tag TAG   Remove specific tag from all notes
+• --rm-note-tag ID            Remove tag from a single note
 
-📋 LIST & SEARCH
-────────────────
-• --list                      List all notes (****** 🔒 indicated protected notes)
-• --find KEY                  Search notes by keyword
-• --view-note ID              View full content of a note
-• --show-tag TAG              Show all notes under a specific tag
+LISTING & SEARCH
+----------------
+• --list                  Display all notes
+• --find KEY              Search notes by keyword
+• --view-note ID          View a specific note
+• --show-tag TAG          View notes under a specific tag
 
-🗑️ NOTE DELETION
-─────────────────
-• --forget ID                 Delete a specific note
-• --forget-all                Delete ALL notes (confirmation + password)
+DELETION
+--------
+• --forget ID             Delete note by ID
+• --forget-all            Delete all notes (confirmation required)
 
-🔐 SECURITY DETAILS
-────────────────────
-• Passwords hashed with SHA-256
-• Deletion/viewing of protected notes requires confirmation
+MISC
+----
+• --version               Show version and author info
 
-🧪 USAGE EXAMPLES
-──────────────────
-remember --signup
-remember --login
-remember --add "Call mom" --tag "family"
-remember --add --tag "diary" --password
-remember --edit-note 2
-remember --find "milk"
-remember --view-note 2
-remember --retag 2 "tasks"
-remember --list-tag
-remember --delete-all-tags
-remember --delete-specific-tag "family"
-remember --rm-note-tag 2
-remember --forget 2
-remember --forget-all
+EXAMPLES
+--------
+$ remember --signup
+$ remember --add "Buy milk" --tag "groceries"
+$ remember --add --tag "journal" --password
+$ remember --edit-note 3
+$ remember --list
+$ remember --find "meeting"
+$ remember --view-note 2
+$ remember --retag 2 "work"
+$ remember --delete-specific-tag "personal"
+$ remember --forget 4
+$ remember --forget-all
 
-🔑 FORGOT PASSWORD?
-────────────────────
-Create a new account using --signup
-
-📦 VERSION & META
-──────────────────
-• --version    Display current version and author info
-
-👨‍💻 AUTHOR
-─────────────
-• Author  : {author}
-• Email   : {email}
-• GitHub  : {github}
-
-🌐 GITHUB REPO
-───────────────
-{github}
-
-Made with ❤️ for Termux users who don’t want to forget little things.
+GitHub: {github}
 """,
         formatter_class=RawTextHelpFormatter
     )
@@ -119,33 +84,31 @@ Made with ❤️ for Termux users who don’t want to forget little things.
     parser.add_argument("--signup", action="store_true", help="Create a new user account")
     parser.add_argument("--login", action="store_true", help="Login to your account")
     parser.add_argument("--logout", action="store_true", help="Logout from your session")
-    parser.add_argument("--add", nargs='?', default=None, type=str, help="Add a new note (single-line with TEXT, or interactive if no TEXT)")
-    parser.add_argument("--edit-note", metavar='ID', type=str, help="Edit a specific note by its ID (interactive)")
-    parser.add_argument("--tag", metavar='TAG', type=str, help="Organize notes with unique tag ")
-    parser.add_argument("--password", action="store_true", help="Protect the note with your login password")
-    parser.add_argument("--list", action="store_true", help="List all saved notes")
+    parser.add_argument("--add", nargs='?', default=None, type=str, help="Add a note (single-line with TEXT or interactive if no TEXT)")
+    parser.add_argument("--edit-note", metavar='ID', type=str, help="Edit a note by ID")
+    parser.add_argument("--tag", metavar='TAG', type=str, help="Add tag to the note")
+    parser.add_argument("--password", action="store_true", help="Protect the note using password")
+    parser.add_argument("--list", action="store_true", help="List all notes")
     parser.add_argument("--find", metavar='KEY', type=str, help="Search notes by keyword")
-    parser.add_argument("--view-note", metavar='ID', type=str, help="View a specific note by its ID")
-    parser.add_argument("--show-tag", metavar='TAG', type=str, help="Show notes with a specific tag")
-    parser.add_argument("--retag", nargs=2, metavar=('ID', 'TAG'), help="Change the tag of a specific note")
+    parser.add_argument("--view-note", metavar='ID', type=str, help="View a note by ID")
+    parser.add_argument("--show-tag", metavar='TAG', type=str, help="Show notes by tag")
+    parser.add_argument("--retag", nargs=2, metavar=('ID', 'TAG'), help="Change tag of a note")
     parser.add_argument("--list-tag", action="store_true", help="List all unique tags")
-    parser.add_argument("--delete-all-tags", action="store_true", help="Remove all tags from all notes")
-    parser.add_argument("--delete-specific-tag", metavar='TAG', type=str, help="Remove a specific tag from all notes")
+    parser.add_argument("--delete-all-tags", action="store_true", help="Remove all tags")
+    parser.add_argument("--delete-specific-tag", metavar='TAG', type=str, help="Remove specific tag from all notes")
     parser.add_argument("--rm-note-tag", metavar='ID', type=str, help="Remove tag from a specific note")
-    parser.add_argument("--forget", metavar='ID', type=str, help="Delete a specific note by its ID")
-    parser.add_argument("--forget-all", action="store_true", help="Delete all notes (require confirmation & password)")
-    parser.add_argument("--version", action="store_true", help="Show current version of the app ")
+    parser.add_argument("--forget", metavar='ID', type=str, help="Delete a specific note")
+    parser.add_argument("--forget-all", action="store_true", help="Delete all notes with confirmation")
+    parser.add_argument("--version", action="store_true", help="Show application version and info")
 
     args = parser.parse_args()
 
     if args.version:
         console.print(f"""
-[bold green]📦 termux-remember v{version}[/bold green]
-[bold cyan]🧑‍💻 Author:[/bold cyan] {author}
-[bold blue]🔗 GitHub:[/bold blue] {github}
-[bold yellow]✉️ Email:[/bold yellow] {email}
-
-[bold magenta]Made with ❤️ for Termux users who don’t want to forget little things.[/bold magenta]
+termux-remember v{version}
+Author : {author}
+Email  : {email}
+GitHub : {github}
 """)
         return
 
@@ -163,7 +126,7 @@ Made with ❤️ for Termux users who don’t want to forget little things.
         if note_text is None:
             memory.add_memory(text=None, tag=args.tag, password_protected=args.password)
         elif note_text.strip() == "":
-            console.print("[bold red]❌ Empty note text. For multi-line or interactive input, use just --add without quotes.[/bold red]")
+            console.print("Error: Note text cannot be empty. For multi-line input, use just --add without quotes.")
         else:
             memory.add_memory(text=note_text, tag=args.tag, password_protected=args.password)
     elif args.edit_note:
